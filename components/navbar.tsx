@@ -1,23 +1,35 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Navitems from "@/components/Navitems"
 
 function Navbar() {
-  return (
-    <nav className="flex items-center justify-between mx-auto w-full px-14 py-4 bg-white max-sm:px-4">
-      <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-        <Image 
-          src="/images/logo.svg" 
-          alt="Converso logo" 
-          width={46} 
-          height={46}
-          priority
-        />
-      </Link>
-      <Navitems />
-    </nav>
-  )
+    return (
+        <nav className="navbar">
+            <Link href="/">
+                <div className="flex items-center gap-2.5 cursor-pointer">
+                    <Image
+                        src="/images/logo.svg"
+                        alt="logo"
+                        width={46}
+                        height={44}
+                    />
+                </div>
+            </Link>
+            <div className="flex items-center gap-8">
+                <Navitems />
+                <SignedOut>
+                    <SignInButton>
+                        <button className="btn-signin">Sign In</button>
+                    </SignInButton>
+                </SignedOut>
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
+            </div>
+        </nav>
+    )
 }
 
 export default Navbar

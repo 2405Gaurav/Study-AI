@@ -6,7 +6,7 @@ import React from 'react'
 
 const navitems = [
     { label: 'Home', href: '/' },
-    { label: 'Companion', href: '/companion' },
+    { label: 'Companion', href: '/companions' },
     { label: 'My Journey', href: '/my-journey' },
     { label: 'Sign Up', href: '/sign-in' }, // Added this since it was in your original Navbar
 ]
