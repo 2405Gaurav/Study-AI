@@ -1,6 +1,7 @@
 'use server'
 import { auth } from "@clerk/nextjs/server"
 import { createSupabaseClient } from "../supabase"
+import { SupabaseClient } from "@supabase/supabase-js"
 
 
 export const createCompanion = async (formData: CreateCompanion) => {
@@ -73,3 +74,26 @@ export const addToSessionHistory = async (companionId: string) => {
     return data;
 }
     
+export const getRecentSessions = async (limit=10)=>{
+    const supabase=createSupabaseClient();
+    const{data,error} = await supabase
+    .from('session_history')
+    .select(`companions:companion_id(*)`)
+    .order('create_id',{ascending:false })
+    .limit(limit)
+    if(error) throw new Error(error.message)
+    return data.map(({companions})=>companions)
+
+}
+export const getUserSession  = async (userId:string ,limit=10)=>{
+    const supabase=createSupabaseClient();
+    const{data,error} = await supabase
+    .from('session_history')
+    .select(`companions:companion_id(*)`)
+    .eq('user_id',userId)
+    .order('create_id',{ascending:false })
+    .limit(limit)
+    if(error) throw new Error(error.message)
+    return data.map(({companions})=>companions)
+
+}
