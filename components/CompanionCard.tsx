@@ -1,5 +1,6 @@
-import Link  from "next/link"
+import Link from "next/link"
 import Image from "next/image"
+import { addbookmark } from "@/lib/actions/companion.actions"
 interface CompanionComponentProps {
     id: string
     name: string
@@ -17,7 +18,7 @@ function CompanionCard({ id, name, topic, subject, duration, color }: CompanionC
         >
             <div className="flex   justify-between items-center ">
                 <div className="bg-black text-white rounded-4xl text-sm px-2 py-1 capitalize">{subject}</div>
-                <button className="bg-black rounded-full p-2 flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">
+                <button className="bg-black rounded-full p-2 flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors" onClick={addbookmark}>
                     <Image src="/icons/bookmark.svg" alt="bookmark" width={12.5} height={15} />
                 </button>
             </div>

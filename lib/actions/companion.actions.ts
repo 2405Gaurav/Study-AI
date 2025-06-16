@@ -1,6 +1,9 @@
 'use server'
 import { auth } from "@clerk/nextjs/server"
 import { createSupabaseClient } from "../supabase"
+import { use } from "react"
+import { revalidatePath } from "next/cache"
+import path from "path"
 
 
 export const createCompanion = async (formData: CreateCompanion) => {
@@ -139,3 +142,27 @@ export const newCompanionPermissions=async ()=>{
     }
 
 }
+
+export const addbookmark = async (companionId: string, path: string) => {
+  const { userId } = await auth();
+  if (!userId) return;
+
+  const supabase = createSupabaseClient();
+
+  const { data, error } = await supabase
+    .from('bookmark')
+    .insert({
+      companion_id: companionId,
+      user_id: userId,
+    })
+    .select()
+    .single(); // optional: returns a single row instead of an array
+
+  if (error) throw new Error(error.message);
+
+//   revalidatePath(path);
+
+  return data;
+};
+
+
