@@ -53,7 +53,7 @@ export const getCompanion = async (id: string) => {
 
     return data[0];
 }
-
+//streak
 export const addToSessionHistory = async (companionId: string) => {
     const { userId } = await auth();
     const supabase = createSupabaseClient();
