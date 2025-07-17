@@ -5,18 +5,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { getUserCOmpanion, getUserSession } from "@/lib/actions/companion.actions";
+import { getUserCompanions, getUserSessions } from "@/lib/actions/companion.actions";
 import { currentUser } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation"; // ✅ CORRECT IMPORT for redirect
+import { redirect } from "next/navigation";
 import Image from "next/image";
 
-export default async function ProfilePage() { // ✅ COMPONENT NAME SHOULD START WITH CAPITAL
+export default async function ProfilePage() {
   const user = await currentUser();
 
-  if (!user) redirect('/sign-in'); // ✅ PROPER REDIRECT
+  if (!user) redirect("/sign-in");
 
-  const companions = await getUserCOmpanion(user.id); // ✅ user is not null here
-  const sessionHistory = await getUserSession(user.id);
+  const companions = await getUserCompanions(user.id);
+  const sessionHistory = await getUserSessions(user.id);
 
   return (
     <main className="min-lg:w-3/4">
@@ -27,13 +27,14 @@ export default async function ProfilePage() { // ✅ COMPONENT NAME SHOULD START
             alt={user.firstName || "User Image"}
             width={110}
             height={110}
+            className="rounded-full"
           />
           <div className="flex flex-col gap-2">
             <h1 className="font-bold text-2xl">
               {user.firstName} {user.lastName}
             </h1>
             <p className="text-sm text-muted-foreground">
-              {user.emailAddresses[0].emailAddress}
+              {user.emailAddresses[0]?.emailAddress}
             </p>
           </div>
         </div>
@@ -43,7 +44,7 @@ export default async function ProfilePage() { // ✅ COMPONENT NAME SHOULD START
             <div className="flex gap-2 items-center">
               <Image src="/icons/check.svg" alt="checkmark" width={22} height={22} />
               <p className="text-2xl font-bold">
-                {sessionHistory.length}
+                {sessionHistory?.length || 0}
               </p>
               <div>Lessons Completed</div>
             </div>
@@ -53,7 +54,7 @@ export default async function ProfilePage() { // ✅ COMPONENT NAME SHOULD START
             <div className="flex gap-2 items-center">
               <Image src="/icons/cap.svg" alt="cap icon" width={22} height={22} />
               <p className="text-2xl font-bold">
-                {companions.length}
+                {companions?.length || 0}
               </p>
               <div>Companions</div>
             </div>
@@ -65,26 +66,17 @@ export default async function ProfilePage() { // ✅ COMPONENT NAME SHOULD START
         <AccordionItem value="recent">
           <AccordionTrigger className="text-2xl font-bold">Recent Sessions</AccordionTrigger>
           <AccordionContent>
-            <CompanionsList
-              title="Recent Sessions"
-              companions={sessionHistory}
-            />
+            <CompanionsList title="Recent Sessions" companions={sessionHistory} />
           </AccordionContent>
-        
         </AccordionItem>
-        <AccordionItem value="comapnions">
-          <AccordionTrigger className="text-2xl font-bold " > 
-            My Companions {`(${companions.length})`}
 
+        <AccordionItem value="companions">
+          <AccordionTrigger className="text-2xl font-bold">
+            My Companions ({companions.length})
           </AccordionTrigger>
           <AccordionContent>
-            <CompanionsList
-              title="My Companions"
-              companions={companions}
-            />
+            <CompanionsList title="My Companions" companions={companions} />
           </AccordionContent>
-
-
         </AccordionItem>
       </Accordion>
     </main>
