@@ -2,7 +2,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *));
 
 :root {
   --primary: #fe5933;
@@ -223,4 +223,4 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-}
+} */
