@@ -6,7 +6,7 @@ import { getSubjectColor } from '@/lib/utils';
 import { Brain, Users, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-
+export const dynamic = 'force-dynamic'
 const Dashboard = async () => {
   const companions = await getAllCompanions({ limit: 3 });
   const recentSessionsCompanions = await getRecentSessions(10);
