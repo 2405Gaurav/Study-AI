@@ -7,7 +7,7 @@ import { Brain, Users, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
 
-const page = async () => {
+const Page = async () => {
     const companions = await getAllCompanions({ limit: 3 });
     const recentSessionsCompanions = await getRecentSessions(10);
 
@@ -190,4 +190,4 @@ const page = async () => {
     )
 }
 
-export default page
+export default Page
