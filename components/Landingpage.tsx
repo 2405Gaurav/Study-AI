@@ -34,7 +34,7 @@ const LandingPage = () => {
             <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-amber-700 rounded-2xl flex items-center justify-center shadow-lg">
               <Brain className="w-7 h-7 text-white" />
             </div>
-            <span className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-700 bg-clip-text text-transparent">LearnAI Pro</span>
+            <span className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-amber-700 bg-clip-text text-transparent">Voicademy</span>
           </div>
           
           {/* Header Auth Buttons */}
