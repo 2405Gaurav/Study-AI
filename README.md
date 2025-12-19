@@ -34,14 +34,14 @@ Voicademy is not just another study app—it is an **AI-powered personal learnin
 
 ## 🎯 Project Overview
 
-Voicademy transforms the traditional, passive study workflow into an **intelligent, adaptive experience**. By integrating cutting-edge Voice AI with Large Language Models, the platform understands student needs, explains complex concepts in real-time, and generates personalized study materials on the fly. Built to be available 24/7, it acts as a mentor that evolves with your learning pace.
+Voicademy transforms the traditional, passive study workflow into an **intelligent, adaptive experience**. By integrating cutting-edge Voice AI with Large Language Models, the platform understands student needs, explains complex concepts in real-time, and generates personalized study materials on the fly. 
 
 ---
 
 ## 🧠 Core Capabilities
 
 ### 🗣️ Voice-Interactive Sessions
-Powered by **Vapi**, Voicademy allows students to have natural, low-latency conversations with their AI tutor. Ask questions out loud, get immediate verbal explanations, and practice active recall through natural dialogue.
+Powered by **Vapi**, Voicademy allows students to have natural, low-latency conversations with their AI tutor. Ask questions out loud, get immediate verbal explanations, and practice active recall through dialogue.
 
 ### 📝 Dynamic Note Generation
 As you learn, the AI automatically synthesizes conversations and study materials into high-quality, structured notes. No more manual transcription—focus on the concept, while the AI handles the documentation.
@@ -70,21 +70,21 @@ The system tracks your learning progress and tailors study paths. It identifies 
 *   **Real-time Interaction:** Leveraging WebSockets and Vapi for zero-lag verbal communication.
 *   **State Management:** Intelligent syncing between voice sessions and the persistent database (Supabase).
 *   **Edge Ready:** Optimized for fast global delivery using Next.js edge runtime and Vercel.
-*   **Secure by Design:** Strict middleware-level authentication using Clerk to protect student data and private study sessions.
+*   **Secure by Design:** Strict middleware-level authentication using Clerk to protect student data.
 
 ---
 
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
+```bash
 git clone https://github.com/2405Gaurav/Study-AI
 cd Study-AI
-
-### 2. Install dependencies
+2. Install dependencies
 code
 Bash
 npm install
-### 3. Environment Setup
+3. Environment Setup
 Create a .env.local file in the root directory with the following keys:
 code
 Env
@@ -97,7 +97,7 @@ VAPI_PUBLIC_KEY=your_vapi_public_key
 code
 Bash
 npm run dev
-### 📁 Project Structure
+📁 Project Structure
 code
 Text
 📂 voicademy
@@ -115,3 +115,4 @@ Developed by [Gaurav]
 [ Live Demo ] • [ Report Bug ] • [ Github ]
 </div>
 </div>
+```
