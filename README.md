@@ -151,6 +151,6 @@ This project is [MIT](LICENSE) licensed.
 
 Developed by [Gaurav](https://github.com/2405Gaurav)
 
-[Live Demo](https://your-demo-link.vercel.app) • [Report Bug](https://github.com/2405Gaurav/Study-AI/issues) • [GitHub](https://github.com/2405Gaurav/Study-AI)
+[Live Demo](https://voicademy.thegauravthakur.in/) • [Report Bug](https://github.com/2405Gaurav/Study-AI/issues) • [GitHub](https://github.com/2405Gaurav/Study-AI)
 
 </div>
