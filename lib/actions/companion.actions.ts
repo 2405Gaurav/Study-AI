@@ -53,7 +53,14 @@ export const getCompanion = async (id: string) => {
     .select()
     .eq('id', id);
 
-  if (error) return console.log(error);
+  if (error) {
+    console.error('Supabase error:', error);
+    throw new Error(error.message);
+  }
+
+  if (!data || data.length === 0) {
+    return null;
+  }
 
   return data[0];
 };
@@ -84,7 +91,9 @@ export const getRecentSessions = async (limit = 10) => {
 
   if (error) throw new Error(error.message);
 
-  return data.map(({ companions }) => companions);
+  return data
+    .map(({ companions }) => companions)
+    .filter((companion): companion is Companion => companion !== null);
 };
 
 // --- Get user-specific sessions ---
@@ -99,7 +108,9 @@ export const getUserSessions = async (userId: string, limit = 10) => {
 
   if (error) throw new Error(error.message);
 
-  return data.map(({ companions }) => companions);
+  return data
+    .map(({ companions }) => companions)
+    .filter((companion): companion is Companion => companion !== null);
 };
 
 // --- Get companions created by user ---
